@@ -1,0 +1,83 @@
+﻿@model Webbansach.ViewModels.GiayViewModel
+
+@{
+    ViewBag.Title = "EditGiay";
+    Layout = "~/Views/Shared/_LayoutPAdmin.cshtml";
+}
+
+<h2><b>SỬA THÔNG TIN GIÀY</b></h2>
+
+@using (Html.BeginForm("EditGiay", "Admin"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@Model.Tengiay</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Magiay)
+
+        <div class="form-group">
+            <div class = "control-label col-md-2"><b>Tên giày</b></div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tengiay, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tengiay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Giá bán</b></div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Giaban, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Giaban, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Mô tả</b></div>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Mota, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Ảnh bìa</b></div>
+            <div class="col-md-10">
+                <img src="~/Hinhsanpham/@Model.Anhbia" alt="@Model.Tengiay" width="400"/>
+                @Html.ValidationMessageFor(model => model.Anhbia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Số lượng tồn</b></div>
+            <div class="col-md-10">
+                <input id="soLuongTon" class="form-control" type="number" value="@Model.Soluongton" onchange="CapNhat()" />
+                @Html.ValidationMessageFor(model => model.Soluongton, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2"><b>Thương hiệu</b></div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.MaThuongHieu, new SelectList(ViewBag.ThuongHieu, "MaThuonghieu", "TenThuongHieu"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaThuongHieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function CapNhat() {
+        let soLuong = $("#soLuongTon").val();
+        if (soLuong < 0) {
+            $("#soLuongTon").val(1);
+        }
+    }
+</script>

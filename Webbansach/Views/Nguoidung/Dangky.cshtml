@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Dangky";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container">
+    <h2 style="text-align:center; font-weight: bold;">ĐĂNG KÝ THÀNH VIÊN</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label>Họ tên khách hàng:</label>
+                <input type="text" name="HoTenKH" class="form-control" style="margin-bottom: 12px;" placeholder="Nhập họ tên" />
+                <span style="color:red; font-style:italic"> @ViewData["Loi1"] </span>
+
+                <label>Tên đăng nhập:</label>
+                <input type="text" name="TenDN" class="form-control" style="margin-bottom: 12px;" placeholder="Nhập tên đăng nhập" />
+                <span style="color:red; font-style:italic"> @ViewData["Loi2"] </span>
+
+                <label>Mật khẩu:</label>
+                <input type="password" name="Matkhau" class="form-control" style="margin-bottom: 12px;" />
+                <span style="color:red; font-style:italic"> @ViewData["Loi3"] </span>
+
+                <label>Nhập lại mật khẩu:</label>
+                <input type="password" name="Matkhaunhaplai" class="form-control" style="margin-bottom: 12px;" />
+                <span style="color:red; font-style:italic"> @ViewData["Loi4"] </span>
+
+                <label>Email:</label>
+                <input type="email" name="Email" class="form-control" style="margin-bottom: 12px;" placeholder="Nhập email" />
+                <span style="color:red; font-style:italic"> @ViewData["Loi5"] </span>
+
+                <label>Địa chỉ:</label>
+                <input type="text" name="Diachi" class="form-control" style="margin-bottom: 12px;" placeholder="Nhập địa chỉ" />
+
+                <label>Điện thoại:</label>
+                <input type="tel" name="Dienthoai" class="form-control" style="margin-bottom: 12px;" placeholder="Nhập số điện thoại" />
+                <span style="color:red; font-style:italic"> @ViewData["Loi6"] </span>
+
+                <label>Ngày sinh:</label>
+                <input type="date" class="form-control" name="Ngaysinh" style="margin-bottom: 12px;" placeholder="Nhập ngày sinh" />
+
+                <input type="Submit" class="btn btn-primary" value="Đăng ký" />
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    }
+</div>

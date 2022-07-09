@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Login</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/form-elements.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h2 style="margin-top: 200px;"><b>ĐĂNG NHẬP HỆ THỐNG</b></h2>
+
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <p class="text-danger">@ViewData["Loi"]</p>
+                @using (Html.BeginForm("Login", "Admin"))
+                {
+                    <!-- Email input -->
+                    <p class="text-left" style="font-weight: bold;">Tên tài khoản</p>
+                    <input type="text" name="Username" placeholder="Tên tài khoản..." class="form-username form-control" id="form-username" style="margin-bottom: 10px;">
+                    @ViewData["Loi1"]
+
+                    <!-- Password input -->
+                    <p class="text-left" style="font-weight: bold;">Mật khẩu</p>
+                    <input type="password" name="Password" placeholder="Mật khẩu ..." class="form-password form-control" id="form-password" style="margin-bottom: 10px;">
+                    @ViewData["Loi2"]
+
+                    <button type="submit" class="btn">ĐĂNG NHẬP</button>
+                }
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</body>
+
+</html>

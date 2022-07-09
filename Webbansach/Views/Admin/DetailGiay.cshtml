@@ -1,0 +1,40 @@
+﻿@model Webbansach.Models.GIAY
+
+@{
+    ViewBag.Title = "DetailGiay";
+    Layout = "~/Views/Shared/_LayoutPAdmin.cshtml";
+}
+
+<h2>Chi tiết giày</h2>
+
+
+
+<div>
+    <h4>@Model.Tengiay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt style="font-size: 20px;">Mã giày</dt>
+        <dd style="font-size: 20px;">@Html.DisplayFor(model => model.Magiay)</dd>
+
+        <dt style="font-size: 20px;">Tên giày</dt>
+        <dd style="font-size: 20px;">@Html.DisplayFor(model => model.Tengiay)</dd>
+
+        <dt style="font-size: 20px;">Giá bán</dt>
+        <dd style="font-size: 20px;">@(Convert.ToInt32(Model.Giaban).ToString("#,##")) VNĐ</dd>
+
+        <dt style="font-size: 20px;">Mô tả</dt>
+        <dd style="font-size: 20px;">@Html.DisplayFor(model => model.Mota)</dd>
+
+        <dt style="font-size: 20px;">Ảnh bìa</dt>
+        <dd style="font-size: 20px;">
+            <img src="@String.Concat("/Hinhsanpham/", Model.Anhbia)" alt="Alternate Text" width="300" />
+        </dd>
+
+        <dt style="font-size: 20px;">Ngày cập nhật</dt>
+        <dd style="font-size: 20px;">@Html.DisplayFor(mode => Model.Ngaycapnhat)</dd>
+
+        <dt style="font-size: 20px;">Số lượng tồn</dt>
+        <dd style="font-size: 20px;">@Html.DisplayFor(model => Model.Soluongton)</dd>
+
+    </dl>
+</div>

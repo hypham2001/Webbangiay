@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Webbansach.Models.GIAY>
+
+@{
+    ViewBag.Title = "Giay";
+    Layout = "~/Views/Shared/_LayoutPAdmin.cshtml";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+<h2><b>DANH SÁCH GIÀY</b></h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Tên Thương Hiệu
+        </th>
+        <th>
+            Tên Giày
+        </th>
+        <th>
+            Giá Bán
+        </th>
+        <th>
+            Mô Tả
+        </th>
+        <th>
+            Ảnh Bìa
+        </th>
+        <th>
+            Ngày Cập Nhật
+        </th>
+        <th>
+            Số Lượng Tồn
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.THUONGHIEU.TenThuongHieu)
+            </td>
+            <td>
+                <p>@Truncate(item.Tengiay, 20)</p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giaban)
+            </td>
+            <td>
+                <p>@Truncate(item.Mota, 20)</p>
+            </td>
+            <td>
+                <img src="~/Hinhsanpham/@item.Anhbia" alt="@item.Tengiay" width="70" />
+            </td>
+            <td>
+                <p>@Convert.ToDateTime(item.Ngaycapnhat).ToShortDateString()</p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluongton)
+            </td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("EditGiay", "Admin", new { id=item.Magiay })"><i class="fas fa-edit"></i></a>
+                <a class="btn btn-success" href="@Url.Action("DetailGiay", "Admin", new { id=item.Magiay })"><i class="fas fa-info-circle"></i></a>
+                @if (!item.TinhTrang)
+                {
+                    <a class="btn btn-danger" href="@Url.Action("DeleteGiay", "Admin", new { id=item.Magiay, CurrentURL = Request.Url.ToString() })"><i class="fas fa-check"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-danger" href="@Url.Action("DeleteGiay", "Admin", new { id=item.Magiay, CurrentURL = Request.Url.ToString() })"><i class="fas fa-times"></i></a>
+                }
+            </td>
+        </tr>
+    }
+
+</table>

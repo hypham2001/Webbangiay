@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Webbansach.Models.DONDATHANG>
+
+@{
+    ViewBag.Title = "DonHang";
+    Layout = "~/Views/Shared/_LayoutPAdmin.cshtml";
+}
+
+<h2><b>DANH SÁCH ĐƠN HÀNG</b></h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Họ Tên
+        </th>
+        <th>
+            Thanh Toán
+        </th>
+        <th>
+            Tình Trạng Giao Hàng
+        </th>
+        <th>
+            Ngày Đặt
+        </th>
+        <th>
+            Ngày Giao
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+            </td>
+            <td>
+                @if (Convert.ToBoolean(item.Dathanhtoan))
+                {
+                    <p>YES</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @if (Convert.ToBoolean(item.Tinhtranggiaohang))
+                {
+                    <p>YES</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaydat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaygiao)
+            </td>
+            <td>
+                <a class="btn btn-success" href="@Url.Action("DetailDonHang", "Admin", new { id=item.MaDonHang })"><i class="fas fa-edit"></i></a>
+                @if (Convert.ToBoolean(item.Tinhtranggiaohang))
+                {
+                    <a class="btn btn-danger" href="@Url.Action("ThayDoiTrangThai", "Admin", new { id=item.MaDonHang, CurrentURL = Request.Url.ToString() })"><i class="fas fa-check"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-danger" href="@Url.Action("ThayDoiTrangThai", "Admin", new { id=item.MaDonHang, CurrentURL = Request.Url.ToString() })"><i class="fas fa-times"></i></a>
+                }
+            </td>
+        </tr>
+    }
+
+</table>

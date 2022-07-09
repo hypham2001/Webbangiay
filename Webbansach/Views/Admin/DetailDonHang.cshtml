@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Webbansach.Models.CHITIETDONTHANG>
+
+@{
+    ViewBag.Title = "DetailDonHang";
+    Layout = "~/Views/Shared/_LayoutPAdmin.cshtml";
+}
+
+<h2><b>CHI TIẾT ĐƠN HÀNG</b></h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Mã Đơn
+        </th>
+        <th>
+            Tên Giày
+        </th>
+        <th>
+            Số Lượng
+        </th>
+        <th>
+            Đơn Giá (VNĐ)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DONDATHANG.MaDonHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIAY.Tengiay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soluong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dongia)
+        </td>
+    </tr>
+}
+
+</table>

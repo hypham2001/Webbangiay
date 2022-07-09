@@ -1,0 +1,29 @@
+﻿@model Webbansach.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutPAdmin.cshtml";
+}
+<div>
+    <h2><b>@Html.DisplayFor(model => model.Taikhoan)</b></h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <h4><b>Họ Tên</b></h4>
+            <h4><b>Tài Khoản</b></h4>
+            <h4><b>Email</b></h4>
+            <h4><b>Địa Chỉ Khách Hàng</b></h4>
+            <h4><b>Điện thoại</b></h4>
+            <h4><b>Ngày Cập Nhật</b></h4>
+        </div>
+        <div class="col-md-4">
+            <h4>@Html.DisplayFor(model => model.HoTen)</h4>
+            <h4>@Html.DisplayFor(model => model.Taikhoan)</h4>
+            <h4>@Html.DisplayFor(model => model.Email)</h4>
+            <h4>@Html.DisplayFor(model => model.DiachiKH)</h4>
+            <h4>@Html.DisplayFor(model => model.DienthoaiKH)</h4>
+            <h4> @Html.DisplayFor(model => model.Ngaysinh)</h4>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Webbansach.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "TaiKhoan";
+    Layout = "~/Views/Shared/_LayoutPAdmin.cshtml";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+<h2><b>QUẢN LÝ TÀI KHOẢN</b></h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Họ Tên
+        </th>
+        <th>
+            Tài Khoản
+        </th>
+        <th>
+            Mật Khẩu
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Địa Chỉ
+        </th>
+        <th>
+            Điện Thoại
+        </th>
+        <th>
+            Ngày Sinh
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taikhoan)
+            </td>
+            <td>
+                <p>@Truncate(item.Matkhau, 20)</p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiachiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienthoaiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysinh)
+            </td>
+            <td>
+                <a href="@Url.Action("EditTaiKhoan", "Admin", new { id=item.MaKH })" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                <a href="@Url.Action("DetailTaiKhoan", "Admin", new { id=item.MaKH })" class="btn btn-success"><i class="fas fa-info-circle"></i></a>
+                @if (!item.TinhTrang)
+                {
+                    <a class="btn btn-danger" href="@Url.Action("DeleteTaiKhoan", "Admin", new { id=item.MaKH, CurrentURL = Request.Url.ToString() })"><i class="fas fa-check"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-danger" href="@Url.Action("DeleteTaiKhoan", "Admin", new { id=item.MaKH, CurrentURL = Request.Url.ToString() })"><i class="fas fa-times"></i></a>
+                }
+            </td>
+        </tr>
+    }
+
+</table>

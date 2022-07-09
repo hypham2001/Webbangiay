@@ -1,0 +1,28 @@
+﻿@model Webbansach.Models.THUONGHIEU
+
+@{
+    ViewBag.Title = "DetailThuongHieu";
+    Layout = "~/Views/Shared/_LayoutPAdmin.cshtml";
+}
+
+<div>
+    <h2><b>@Model.TenThuongHieu</b></h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <h4><b>Tên Thương Hiệu</b></h4>
+            <h4><b>Địa Chỉ</b></h4>
+            <h4><b>Số Điện Thoại</b></h4>
+        </div>
+        <div class="col-md-4">
+            <h4>@Html.DisplayFor(model => model.TenThuongHieu)</h4>
+            <h4>@Html.DisplayFor(model => model.Diachi)</h4>
+            <h4>@Html.DisplayFor(model => model.DienThoai)</h4>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+</div>
+
+<p style="margin-top: 10px;" >
+    @Html.ActionLink("Back to List", "Index")
+</p>

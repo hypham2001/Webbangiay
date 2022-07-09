@@ -1,0 +1,7 @@
+﻿@model Webbansach.Models.THUONGHIEU
+<div class="list-group">
+    @foreach (var thuonghieu in Model)
+    {
+        <a href="@Url.Action("SachtheoNXB","BookStore", new {id = thuonghieu.MaThuongHieu})" class="list-group-item"> @thuonghieu.TenThuongHieu</a>
+    }
+</div>

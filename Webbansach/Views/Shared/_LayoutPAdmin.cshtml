@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li style="font-size: 20px; font-weight: 700;">@Html.ActionLink("QL Tài khoản", "Taikhoan", "Admin")</li>
+                    <li style="font-size: 20px; font-weight: 700;">@Html.ActionLink("QL Thương hiệu", "ThuongHieu", "Admin")</li>
+                    <li style="font-size: 20px; font-weight: 700;">@Html.ActionLink("QL Giày", "Giay", "Admin")</li>
+                    <li style="font-size: 20px; font-weight: 700;">@Html.ActionLink("QL Đơn hàng", "DonHang", "Admin")</li>
+                    @using Webbansach.Models 
+                    @if (Session["Taikhoanadmin"] == null)
+                    {
+                        <li style="font-size: 20px; font-weight: 700;">@Html.ActionLink("Đăng Nhập", "Login", "Admin")</li>
+                    }
+                    else
+                    {
+                        <li style="font-size: 20px; font-weight: 700;">@Html.ActionLink("Đăng Xuất", "Login", "Admin")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
